@@ -1,56 +1,50 @@
 class RatingsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+    # GET /ratings
     def index 
         ratings = Rating.all 
         render json: ratings
     end
 
+    # GET /ratings/:id
     def show 
         rating = find_rating
-        if rating
-            render json: rating
-        else 
-            render_not_found_response
-        end
+        render json: rating
     end
 
+    # POST /ratings
     def create 
         rating = Rating.create(rating_params)
         render json: rating, status: :created 
     end
 
+    # PATCH /ratings/:id
     def update 
-        rating = Rating.find_by(id: params[:id])
-        if rating 
-            rating.update(rating_params) 
-            render json: rating
-        else 
-            render json: { error: "Rating not found" }, status: :not_found 
-        end
+        rating = find_rating
+        rating.update(rating_params) 
+        render json: rating
     end
 
+    # DELETE /ratings/:id
     def destroy 
-        rating = Rating.find_by(id: params[:id])
-        if rating 
-            rating.destroy 
-            head :no_content 
-        else 
-            render json: { error: "Rating not found" }, status: :not_found 
-        end
+        rating = find_rating
+        rating.destroy 
+        head :no_content 
     end
 
     private 
-
-    def render_not_found_response
-        render json: { error: "Rating not found" }, status: :not_found 
-    end
-
+    
     def find_rating 
-        Rating.find_by(id: params[:id])
+        Rating.find(params[:id])
     end
-
+    
     def rating_params
         params.permit(:rating, :sitter_id, :client_id)
+    end
+    
+    def render_not_found_response
+        render json: { error: "Rating not found" }, status: :not_found 
     end
 
 end
