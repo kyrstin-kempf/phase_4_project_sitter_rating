@@ -7,21 +7,22 @@ Rails.application.routes.draw do
   # resources :clients, only: [:index, :show]
   # resources :sitteres, only: [:index, :show]
 
+  post '/login', to: 'sessions#index'
 
-  get 'sitters', to: 'sitters#index'
-  get 'sitters/:id', to: 'sitters#show'
-  post 'sitters', to: 'sitters#create'
-  patch 'sitters/:id', to: 'sitters#update'
+  get '/sitters', to: 'sitters#index'
+  get '/sitters/:id', to: 'sitters#show'
+  post '/sitters', to: 'sitters#create'
+  patch '/sitters/:id', to: 'sitters#update'
 
-  get 'clients', to: 'clients#index'
-  get 'clients/:id', to: 'clients#show'
-  post 'clients', to: 'clients#create'
-  patch 'clients/:id', to: 'clients#update'
+  get '/clients', to: 'clients#index'
+  get '/clients/:id', to: 'clients#show'
+  post '/clients', to: 'clients#create'
+  patch '/clients/:id', to: 'clients#update'
 
-  get 'ratings', to: 'ratings#index'
-  get 'ratings/:id', to: 'ratings#show'
-  post 'ratings', to: 'ratings#create'
-  patch 'ratings/:id', to: 'ratings#update'
-  delete 'ratings/:id', to: 'ratings#destroy'
+  get '/ratings', to: 'ratings#index'
+  get '/ratings/:id', to: 'ratings#show'
+  post '/ratings', to: 'ratings#create'
+  patch '/ratings/:id', to: 'ratings#update'
+  delete '/ratings/:id', to: 'ratings#destroy'
 
 end
