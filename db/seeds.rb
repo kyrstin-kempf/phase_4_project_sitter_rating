@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+josie = Client.create!(name: 'Josie', number_of_children: 3)
+andre = Client.create!(name: 'Andre', number_of_children: 1)
+
+kyrstin = Sitter.create!(name: 'kyrstin', years_of_experience: 7, hourly_rate: 20)
+jessie = Sitter.create!(name: 'jessie', years_of_experience: 3, hourly_rate: 18)
+
+Rating.create!(rating: 4.2, sitter_id: kyrstin.id, client_id: andre.id)
+Rating.create!(rating: 3.8, sitter_id: jessie.id, client_id: andre.id)
+Rating.create!(rating: 4.8, sitter_id: kyrstin.id, client_id: josie.id)
+Rating.create!(rating: 3.2, sitter_id: jessie.id, client_id: josie.id)
