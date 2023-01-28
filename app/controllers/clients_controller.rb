@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+    # resources :clients, only: [:index, :show]
 
     def index 
         clients = Client.all
