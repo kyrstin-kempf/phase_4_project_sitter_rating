@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2023_01_28_050311) do
     t.integer "years_of_experience"
     t.integer "hourly_rate"
     t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false 
   end
 
 end
