@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   # resources :clients, only: [:index, :show]
   # resources :sitteres, only: [:index, :show]
 
-  post '/login', to: 'sessions#index'
+  post '/login', to: 'sessions#create'
+  get '/me', to: 'user#show'
+  delete '/logout', to: 'sessions#destroy'
 
   get '/sitters', to: 'sitters#index'
   get '/sitters/:id', to: 'sitters#show'
